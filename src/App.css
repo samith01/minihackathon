@@ -17,10 +17,19 @@ main {
   flex-direction: column;
   padding: 0;
   background: #f8f9fa;
-  height: calc(100vh - 130px); /* Fixed height: viewport - header - tabs */
+  height: calc(100vh - 130px); /* Full height: viewport - header - tabs */
   max-height: calc(100vh - 130px);
+  min-height: calc(100vh - 130px);
   overflow: hidden;
   position: relative;
+}
+
+.roommates-main {
+  flex: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
 }
 
 /* Tab Navigation */
@@ -136,6 +145,50 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 1.5rem;
+}
+
+/* Listings Actions */
+.listings-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.btn-show-more {
+  background: white;
+  color: #495057;
+  border: 2px solid #e9ecef;
+  padding: 12px 32px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-show-more:hover {
+  border-color: #8E1728;
+  color: #8E1728;
+}
+
+.btn-find-roommate {
+  background: linear-gradient(135deg, #8E1728, #b91c3a);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(142, 23, 40, 0.3);
+}
+
+.btn-find-roommate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(142, 23, 40, 0.4);
 }
 
 /* No Results */

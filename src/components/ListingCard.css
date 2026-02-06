@@ -98,6 +98,15 @@
   transform: scale(1.1);
 }
 
+.favorite-btn.liked {
+  color: #e63946;
+  background: rgba(230, 57, 70, 0.1);
+}
+
+.favorite-btn.liked:hover {
+  background: rgba(230, 57, 70, 0.2);
+}
+
 .listing-content {
   padding: 1.25rem;
   display: flex;
@@ -216,9 +225,30 @@
   margin-top: 0.5rem;
 }
 
+.listing-actions {
+  display: flex;
+  gap: 8px;
+}
+
 .posted-date {
   font-size: 0.8rem;
   color: #adb5bd;
+}
+
+.btn-roommates {
+  background: transparent;
+  color: #8E1728;
+  border: 1px solid #8E1728;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-roommates:hover {
+  background: rgba(142, 23, 40, 0.08);
 }
 
 .btn-contact {

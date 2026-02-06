@@ -2,30 +2,42 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  background: white;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  background: #f8f9fa;
   overflow: hidden;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .chat-messages {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 2rem;
+  padding: 2rem 3rem;
   padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   background: #f8f9fa;
-  min-height: 0; /* Important for flex overflow */
+  min-height: 0;
+}
+
+/* Spacer pushes messages down when few messages */
+.chat-messages::before {
+  content: '';
+  flex: 1;
 }
 
 .message {
   display: flex;
   flex-direction: column;
-  max-width: 85%;
+  max-width: 70%;
+  flex-shrink: 0;
 }
 
 .message.user {
@@ -34,6 +46,7 @@
 
 .message.assistant {
   align-self: flex-start;
+  max-width: 90%; /* Allow more space for listings */
 }
 
 .message-bubble {
@@ -79,14 +92,15 @@
 
 .message-listings {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
   margin-top: 1rem;
   width: 100%;
+  max-width: 100%;
 }
 
 .chat-input-area {
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 3rem;
   background: white;
   border-top: 1px solid #e9ecef;
   display: flex;

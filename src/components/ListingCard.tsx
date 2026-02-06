@@ -1,11 +1,15 @@
 import type { Listing } from '../types';
+import { useFavorites } from '../context/FavoritesContext';
 import './ListingCard.css';
 
 interface ListingCardProps {
   listing: Listing;
+  onShowRoommates?: (listingId: string) => void;
 }
 
-export function ListingCard({ listing }: ListingCardProps) {
+export function ListingCard({ listing, onShowRoommates }: ListingCardProps) {
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const liked = isFavorite(listing.id);
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -42,8 +46,12 @@ export function ListingCard({ listing }: ListingCardProps) {
             {listing.postedBy === 'student' ? '🎓 Student' : '🏠 Landlord'}
           </span>
         </div>
-        <button className="favorite-btn" aria-label="Save listing">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <button 
+          className={`favorite-btn ${liked ? 'liked' : ''}`} 
+          aria-label="Save listing"
+          onClick={() => toggleFavorite(listing.id)}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill={liked ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
           </svg>
         </button>
@@ -105,7 +113,14 @@ export function ListingCard({ listing }: ListingCardProps) {
 
         <div className="listing-footer">
           <span className="posted-date">Posted {formatDate(listing.postedDate)}</span>
-          <button className="btn-contact">Contact</button>
+          <div className="listing-actions">
+            {onShowRoommates && (
+              <button className="btn-roommates" onClick={() => onShowRoommates(listing.id)}>
+                Find Roommates
+              </button>
+            )}
+            <button className="btn-contact">Contact</button>
+          </div>
         </div>
       </div>
     </article>
