@@ -39,7 +39,9 @@ export function ChatInterface() {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [apiKey, setApiKey] = useState(localStorage.getItem('groq_api_key') || '');
+  const [apiKey, setApiKey] = useState(
+    import.meta.env.VITE_GROQ_API_KEY || localStorage.getItem('groq_api_key') || ''
+  );
   const [showApiKeyInput, setShowApiKeyInput] = useState(!apiKey);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
