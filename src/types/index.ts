@@ -1,11 +1,10 @@
 export interface Listing {
   id: string;
   title: string;
-  location: string;
+  address: string;
   zone: string;
-  residenceType: 'apartment' | 'conventional' | 'university';
-  buildingName: string;
-  rentalType: 'sublet' | 'takeover';
+  propertyType: string;
+  rentalType: string;
   price: number;
   bedrooms: number;
   bathrooms: number;
@@ -16,11 +15,12 @@ export interface Listing {
   postedBy: 'student' | 'landlord';
   postedDate: string;
   contactEmail: string;
+  contactPhone?: string;
 }
 
 export interface SearchFilters {
   zone: string;
-  residenceType: string;
+  propertyType: string;
   rentalType: string;
   minPrice: number;
   maxPrice: number;

@@ -1,5 +1,5 @@
 import type { SearchFilters as SearchFiltersType } from '../types';
-import { zones, residenceTypes, rentalTypes, bedroomOptions } from '../data/mockData';
+import { zones, propertyTypes, rentalTypes, bedroomOptions } from '../data/mockData';
 import './SearchFilters.css';
 
 interface SearchFiltersProps {
@@ -16,7 +16,7 @@ export function SearchFilters({ filters, onFilterChange, resultsCount }: SearchF
   const handleReset = () => {
     onFilterChange({
       zone: '',
-      residenceType: '',
+      propertyType: '',
       rentalType: '',
       minPrice: 0,
       maxPrice: 9999,
@@ -50,13 +50,13 @@ export function SearchFilters({ filters, onFilterChange, resultsCount }: SearchF
             </div>
 
             <div className="filter-group">
-              <label htmlFor="residenceType">Residence Type</label>
+              <label htmlFor="propertyType">Property Type</label>
               <select
-                id="residenceType"
-                value={filters.residenceType}
-                onChange={(e) => handleChange('residenceType', e.target.value)}
+                id="propertyType"
+                value={filters.propertyType}
+                onChange={(e) => handleChange('propertyType', e.target.value)}
               >
-                {residenceTypes.map((type) => (
+                {propertyTypes.map((type) => (
                   <option key={type.value} value={type.value}>
                     {type.label}
                   </option>

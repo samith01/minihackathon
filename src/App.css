@@ -7,6 +7,70 @@
 
 main {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background: #f8f9fa;
+  height: calc(100vh - 130px); /* Fixed height: viewport - header - tabs */
+  max-height: calc(100vh - 130px);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+  background: white;
+  border-bottom: 1px solid #e9ecef;
+  position: sticky;
+  top: 80px;
+  z-index: 90;
+}
+
+.tab-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #6c757d;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: #495057;
+  background: #f8f9fa;
+}
+
+.tab-btn.active {
+  color: #8E1728;
+  border-bottom-color: #8E1728;
+}
+
+.tab-btn svg {
+  opacity: 0.7;
+}
+
+.tab-btn.active svg {
+  opacity: 1;
 }
 
 /* Listings Section */
@@ -168,6 +232,15 @@ main {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .tab-container {
+    padding: 0 1rem;
+  }
+
+  .tab-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
   .listings-section {
     padding: 2rem 1rem;
   }
